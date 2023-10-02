@@ -7,6 +7,7 @@
 ### Pre-requisites (Optional)
 
 1. Install [iTerm](https://iterm2.com/)
+1. Install [Color Scheme](https://iterm2colorschemes.com/)
 1. Set font size to 18
 1. Install [oh-my-zsh](https://ohmyz.sh/)
 1. Install [PowerLevel10k](https://github.com/romkatv/powerlevel10k)
