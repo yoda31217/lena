@@ -17,5 +17,9 @@
 1. Install [NeoVim](https://neovim.io/)
 1. Install [Nerd Font](https://www.nerdfonts.com/) in Terminal
 1. Install [Ripgrep](https://github.com/BurntSushi/ripgrep)
-1. `git clone https://github.com/yoda31217/lena ./lena && lena/l-script/setup-nvim.sh`
+1. 
+
+~~~
+git clone https://github.com/yoda31217/lena ./lena && lena/l-script/setup-nvim.sh`
+~~~
 
