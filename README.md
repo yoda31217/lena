@@ -20,6 +20,6 @@
 1. 
 
 ~~~
-git clone https://github.com/yoda31217/lena ./lena && lena/l-script/setup-nvim.sh`
+git clone https://github.com/yoda31217/lena ./lena && lena/l-script/setup-nvim.sh
 ~~~
 
