@@ -17,4 +17,6 @@ M.plugins = "custom.plugins"
 
 M.mappings = require "custom.mappings"
 
+vim.opt.wrap = false
+
 return M
