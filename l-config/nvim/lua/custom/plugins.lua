@@ -1,5 +1,6 @@
 require("custom.configs.treesitter")
 require("custom.configs.nvimtree")
+require("custom.configs.blankline")
 
 local plugins = {
 	{
