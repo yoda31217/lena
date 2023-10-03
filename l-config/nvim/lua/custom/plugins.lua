@@ -20,17 +20,7 @@ local plugins = {
 	},
 
 	{
-		"williamboman/mason.nvim",
-		opts = {
-			ensure_installed = {
-				"lua-language-server",
-				"html-lsp",
-				"eslint-lsp",
-				"prettier",
-				"stylua",
-				"typescript-language-server",
-			},
-		},
+		"mfussenegger/nvim-jdtls",
 	},
 }
 
