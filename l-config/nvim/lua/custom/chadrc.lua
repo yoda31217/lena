@@ -2,21 +2,22 @@
 local M = {}
 
 M.ui = {
-  theme = "tokyonight",
+	theme = "tokyonight",
 
-  telescope = {
-    style = "bordered",
-  },
+	telescope = {
+		style = "bordered",
+	},
 
-  nvdash = {
-    load_on_startup = true,
-  },
+	nvdash = {
+		load_on_startup = true,
+	},
 }
 
 M.plugins = "custom.plugins"
 
-M.mappings = require "custom.mappings"
+M.mappings = require("custom.mappings")
 
 vim.opt.wrap = false
+vim.opt.colorcolumn="80,120"
 
 return M
