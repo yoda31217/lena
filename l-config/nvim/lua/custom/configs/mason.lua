@@ -1,4 +1,4 @@
-local mason_config = require("plugins.configs.mason").blankline
+local mason_config = require("plugins.configs.mason")
 
 mason_config.ensure_installed = {
 	"lua-language-server",

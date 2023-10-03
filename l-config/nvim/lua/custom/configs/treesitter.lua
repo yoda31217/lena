@@ -7,7 +7,6 @@ treesitter_config.ensure_installed = {
 	"css",
 	"javascript",
 	"typescript",
-	"jsx",
 	"tsx",
 	"json",
 	"java",
