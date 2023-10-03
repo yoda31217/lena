@@ -6,7 +6,7 @@ local formatting = null_ls.builtins.formatting
 local lint = null_ls.builtins.diagnostics
 
 local sources = {
-   formatting.prettier,
+   formatting.prettier.with ({extra_args={"--single-quote", "--print-width", "120"}}),
    formatting.stylua,
 
    -- lint.shellcheck,
