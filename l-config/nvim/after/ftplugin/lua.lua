@@ -1,1 +1,2 @@
-require("core.bootstrap").echo("asdasdasd" .. "123123")
+-- require("core.bootstrap").echo("asdasdasd" .. "123123")
+--
