@@ -9,3 +9,4 @@ nvimtree_config.renderer.highlight_modified = "all"
 nvimtree_config.modified = { enable = true }
 nvimtree_config.git.enable = true
 nvimtree_config.git.ignore = false
+nvimtree_config.view.width = "30%"
