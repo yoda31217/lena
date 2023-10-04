@@ -2,6 +2,7 @@ require("custom.configs.treesitter")
 require("custom.configs.nvimtree")
 require("custom.configs.blankline")
 require("custom.configs.mason")
+require("custom.configs.gitsigns")
 
 local plugins = {
 	-- Skeleton of this plugin configuration copy-pasted from NvChad
