@@ -34,6 +34,14 @@ M.abc = {
 			end,
 			"Format and organize",
 		},
+		["gd"] = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "" },
+		["K"] = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "" },
+		["rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "" },
+		["gr"] = { "<cmd>lua vim.lsp.buf.references() && vim.cmd(\"copen\")<CR>", "" },
+		["<leader>ld"] = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "" },
+		["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "" },
+		["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "" },
+		["<leader>q"] = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "" },
 	},
 
 	i = {
