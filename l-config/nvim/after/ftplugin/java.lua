@@ -11,14 +11,12 @@ local config = {
 		"--jvm-arg=-Dlog.protocol=true",
 		"--jvm-arg=-Dlog.level=ALL",
 		"--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar",
-		-- "-data",
-		-- "/Users/niknik/Documents/projects/thingsteam/best-goods/.lena/nvim/mason/packages/jdtls/data",
+		-- "-data", "... WE NEED TO SET UP IT IN FUTURE; CURRENTLY UNIQUE PER PROJECT FOLDER NAME ",
 	},
 	root_dir = vim.fn.getcwd(),
 
 	settings = {
 		java = {
-			-- home = "/usr/local/jdk-9.0.1",
 			errors = {
 				incompleteClasspath = {
 					severity = "warning",
