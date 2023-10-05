@@ -1,11 +1,9 @@
--- require("core.bootstrap").echo("asdasdasd" .. "123123")
-
--- vim.notify("This is java file")
-
 local config = {
 	cmd = {
 		"/Users/niknik/.local/share/nvim/mason/packages/jdtls/bin/jdtls",
-		"--jvm-arg=-Dlog.protocol=true -Dlog.level=ALL -javaagent:/Users/niknik/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+		"--jvm-arg=-Dlog.protocol=true",
+		"--jvm-arg=-Dlog.level=ALL",
+		"--jvm-arg=-javaagent:/Users/niknik/.local/share/nvim/mason/packages/jdtls/lombok.jar",
 		-- "-data",
 		-- "/Users/niknik/Documents/projects/thingsteam/best-goods/.lena/nvim/mason/packages/jdtls/data",
 	},
@@ -96,6 +94,5 @@ local config = {
 		},
 	},
 }
-
 
 require("jdtls").start_or_attach(config)
