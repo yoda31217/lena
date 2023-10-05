@@ -14,13 +14,13 @@ M.abc = {
 		-- ["<C-n>"] = { "<cmd> Telescope <CR>", "Telescope" },
 		-- ["<C-s>"] = { ":Telescope Files <CR>", "Telescope Files" },
 		-- ["<C-h>"] = { "<A-h>", "Lena: Toggle terminal" },
-		["<C-h>"] = {
-			function()
-				require("nvterm.terminal").toggle("horizontal")
-			end,
-			"Toggle horizontal term",
-		},
-
+		-- ["<C-A-h>"] = {
+		-- 	function()
+		-- 		require("nvterm.terminal").toggle("horizontal")
+		-- 	end,
+		-- 	"Toggle horizontal term",
+		-- },
+		--
 		["<leader>fm"] = {
 			function()
 				vim.lsp.buf.format({
@@ -37,6 +37,13 @@ M.abc = {
 	},
 
 	i = {
+		-- ["<C-M-h>"] = {
+		-- 	function()
+		-- 		require("nvterm.terminal").toggle("horizontal")
+		-- 	end,
+		-- 	"Toggle horizontal term",
+		-- },
+
 		-- ["jk"] = { "<ESC>", "escape insert mode", opts = { nowait = true } },
 		-- ...
 		-- ["<M-Left>"] = { "<S-Left>", "" },
@@ -44,12 +51,12 @@ M.abc = {
 	},
 
 	t = {
-		["<C-h>"] = {
-			function()
-				require("nvterm.terminal").toggle("horizontal")
-			end,
-			"Toggle horizontal term",
-		},
+		-- ["<C-M-h>"] = {
+		-- 	function()
+		-- 		require("nvterm.terminal").toggle("horizontal")
+		-- 	end,
+		-- 	"Toggle horizontal term",
+		-- },
 	},
 }
 
