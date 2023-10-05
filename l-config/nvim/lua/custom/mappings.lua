@@ -42,6 +42,11 @@ M.abc = {
 		["[d"] = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "" },
 		["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "" },
 		["<leader>q"] = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "" },
+
+
+
+-- My hotkeys
+		["<leader>tw"] = { "<CMD>lua vim.o.wrap = not vim.o.wrap<CR>", "" },
 	},
 
 	i = {
