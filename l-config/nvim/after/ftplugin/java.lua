@@ -1,13 +1,20 @@
+-- Help docs:
+-- https://github.com/mfussenegger/nvim-jdtls
+-- https://github.com/eclipse-jdtls/eclipse.jdt.ls
+-- https://github.com/mfussenegger/nvim-jdtls/wiki/Sample-Configurations
+-- https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line
+-- https://github.com/Nawy/nvim-config-examples/blob/main/lsp-java/ftplugin/java.lua
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
 local config = {
 	cmd = {
-		"/Users/niknik/.local/share/nvim/mason/packages/jdtls/bin/jdtls",
+		vim.fn.stdpath("data") .. "/mason/packages/jdtls/bin/jdtls",
 		"--jvm-arg=-Dlog.protocol=true",
 		"--jvm-arg=-Dlog.level=ALL",
-		"--jvm-arg=-javaagent:/Users/niknik/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+		"--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar",
 		-- "-data",
 		-- "/Users/niknik/Documents/projects/thingsteam/best-goods/.lena/nvim/mason/packages/jdtls/data",
 	},
-	root_dir = "/Users/niknik/Documents/projects/thingsteam/best-goods",
+	root_dir = vim.fn.getcwd(),
 
 	settings = {
 		java = {
