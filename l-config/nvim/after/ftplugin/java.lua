@@ -21,7 +21,7 @@ local config = {
 
 	settings = { java = {} },
 
-	on_attach = function(_, buffer)
+	on_attach = function(client, buffer)
 		utils.load_mappings("lspconfig", { buffer = buffer })
 
 		vim.keymap.set("n", "<leader>fm", function()
