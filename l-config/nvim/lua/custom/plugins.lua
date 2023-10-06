@@ -32,6 +32,10 @@ local plugins = {
 	},
 
 	{
+		"mfussenegger/nvim-dap",
+	},
+
+	{
 		"nvim-telescope/telescope-ui-select.nvim",
 	},
 }

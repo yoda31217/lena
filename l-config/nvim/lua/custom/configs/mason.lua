@@ -8,4 +8,6 @@ mason_config.ensure_installed = {
 	"stylua",
 	"typescript-language-server",
 	"jdtls",
+  "java-test",
+  "java-debug-adapter",
 }

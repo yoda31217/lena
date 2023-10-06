@@ -28,14 +28,16 @@ local config = {
 			vim.lsp.buf.format({ async = false })
 			jdtls.organize_imports()
 		end, { noremap = true, desc = "Organize Imports" })
+
+		vim.keymap.set("n", "<F5>", function()
+			print("clk")
+      -- vim.cmd("term ")
+		end, { noremap = true, desc = "" })
+
+		jdtls.setup_dap({})
 	end,
 
-  init_options = {
-    -- bundles = {
-    --   vim.fn.getcwd() .. " e"
-    -- }
-  }
-
+	init_options = { bundles = { vim.fn.glob("~/.config/nvim/java-debug/com.microsoft.java.debug.plugin-*.jar", 1) } },
 }
 
 jdtls.start_or_attach(config)
