@@ -23,6 +23,11 @@ local config = {
 
 	on_attach = function(_, buffer)
 		utils.load_mappings("lspconfig", { buffer = buffer })
+
+		vim.keymap.set("n", "<leader>fm", function()
+			vim.lsp.buf.format({ async = false })
+			jdtls.organize_imports()
+		end, { noremap = true, desc = "Organize Imports" })
 	end,
 }
 
