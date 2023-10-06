@@ -11,7 +11,7 @@ M.disabled = {
 -- Your custom mappings
 M.abc = {
 	n = {
-		-- ["<C-n>"] = { "<cmd> Telescope <CR>", "Telescope" },
+		["<leader>tb"] = { "<Cmd> Telescope builtin<CR>", "Lists of Built-in Telescope pickers" },
 		-- ["<C-s>"] = { ":Telescope Files <CR>", "Telescope Files" },
 		-- ["<C-h>"] = { "<A-h>", "Lena: Toggle terminal" },
 		-- ["<C-A-h>"] = {
@@ -43,10 +43,8 @@ M.abc = {
 		-- ["]d"] = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "" },
 		-- ["<leader>q"] = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "" },
 
-
-
--- My hotkeys
-		["<leader>tw"] = { "<CMD>lua vim.o.wrap = not vim.o.wrap<CR>", "" },
+		-- My hotkeys
+		["<leader>tw"] = { "<CMD>lua vim.o.wrap = not vim.o.wrap<CR>", "Toggle word wrapping in the current buffer" },
 	},
 
 	i = {
