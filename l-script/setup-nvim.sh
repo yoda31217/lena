@@ -11,10 +11,9 @@ cd ..
 git submodule init
 git submodule update
 
-#ln -s "$(pwd)/l-config/nvim/after" l-nvchad-config/nvim/after
-#ln -s "$(pwd)/l-config/nvim/lua/custom" l-nvchad-config/nvim/lua/custom
-#
-#./l-script/reset-nvim.sh
-#
-#ln -s "$(pwd)/l-nvchad-config/nvim" ~/.config/nvim
+ln -s "$(pwd)/l-config/nvim/after" l-dependencies/nvchad/after
+ln -s "$(pwd)/l-config/nvim/lua/custom" l-dependencies/nvchad/lua/custom
 
+./l-script/reset-nvim.sh
+
+ln -s "$(pwd)/l-dependencies/nvchad" ~/.config/nvim
