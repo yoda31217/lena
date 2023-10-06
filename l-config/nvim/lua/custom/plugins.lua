@@ -3,6 +3,7 @@ require("custom.configs.nvimtree")
 require("custom.configs.blankline")
 require("custom.configs.mason")
 require("custom.configs.gitsigns")
+require("custom.configs.telescope")
 
 local plugins = {
 	-- Skeleton of this plugin configuration copy-pasted from NvChad
@@ -28,6 +29,10 @@ local plugins = {
 
 	{
 		"mfussenegger/nvim-jdtls",
+	},
+
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
 	},
 }
 
