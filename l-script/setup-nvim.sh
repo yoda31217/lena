@@ -6,14 +6,18 @@ set -e
 # Goto current script folder
 cd "$(dirname "$0")"
 
-rm -rf ../l-nvchad-config/nvim
-git clone https://github.com/NvChad/NvChad ../l-nvchad-config/nvim
+cd ..
+
+# rm -rf ../l-nvchad-config/nvim
+# git clone https://github.com/NvChad/NvChad ../l-nvchad-config/nvim
 # git clone https://github.com/NvChad/NvChad ../l-nvchad-config/nvim --depth 1
 
-ln -s "$(pwd)/../l-config/nvim/after" ../l-nvchad-config/nvim/after
-ln -s "$(pwd)/../l-config/nvim/lua/custom" ../l-nvchad-config/nvim/lua/custom
+git submodule update --init --recursive
 
-./reset-nvim.sh
+ln -s "$(pwd)/l-config/nvim/after" l-nvchad-config/nvim/after
+ln -s "$(pwd)/l-config/nvim/lua/custom" l-nvchad-config/nvim/lua/custom
 
-ln -s "$(pwd)/../l-nvchad-config/nvim" ~/.config/nvim
+./l-script/reset-nvim.sh
+
+ln -s "$(pwd)/l-nvchad-config/nvim" ~/.config/nvim
 
