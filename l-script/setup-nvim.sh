@@ -8,16 +8,13 @@ cd "$(dirname "$0")"
 
 cd ..
 
-# rm -rf ../l-nvchad-config/nvim
-# git clone https://github.com/NvChad/NvChad ../l-nvchad-config/nvim
-# git clone https://github.com/NvChad/NvChad ../l-nvchad-config/nvim --depth 1
+git submodule init
+git submodule update
 
-git submodule update --init --recursive
-
-ln -s "$(pwd)/l-config/nvim/after" l-nvchad-config/nvim/after
-ln -s "$(pwd)/l-config/nvim/lua/custom" l-nvchad-config/nvim/lua/custom
-
-./l-script/reset-nvim.sh
-
-ln -s "$(pwd)/l-nvchad-config/nvim" ~/.config/nvim
+#ln -s "$(pwd)/l-config/nvim/after" l-nvchad-config/nvim/after
+#ln -s "$(pwd)/l-config/nvim/lua/custom" l-nvchad-config/nvim/lua/custom
+#
+#./l-script/reset-nvim.sh
+#
+#ln -s "$(pwd)/l-nvchad-config/nvim" ~/.config/nvim
 
