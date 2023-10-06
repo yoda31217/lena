@@ -29,6 +29,13 @@ local config = {
 			jdtls.organize_imports()
 		end, { noremap = true, desc = "Organize Imports" })
 	end,
+
+  init_options = {
+    -- bundles = {
+    --   vim.fn.getcwd() .. " e"
+    -- }
+  }
+
 }
 
 jdtls.start_or_attach(config)
