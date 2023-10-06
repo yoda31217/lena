@@ -17,6 +17,8 @@ ln -s "$(pwd)/l-config/nvim/lua/custom" l-dependencies/nvchad/lua/custom
 cd l-dependencies/microsoft/java-debug
 ./mvnw clean install
 
+cd ../../..
+
 # We cannot UNDO changes below
 ./l-script/reset-nvim.sh
 ln -s "$(pwd)/l-dependencies/nvchad" ~/.config/nvim
