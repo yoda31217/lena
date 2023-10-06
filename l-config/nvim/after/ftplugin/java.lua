@@ -1,4 +1,5 @@
 local jdtls = require("jdtls")
+local utils = require("core.utils")
 
 -- Help docs:
 -- https://github.com/mfussenegger/nvim-jdtls
@@ -191,15 +192,18 @@ local config = {
 		-- 	noremap = true,
 		-- })
 		--
+
+		utils.load_mappings("lspconfig", { buffer = bufnr })
+
 		-- vim.keymap.set("n", "<leader>ca", function()
-  --     vim.lsp.buf.code_action()
+		--     vim.lsp.buf.code_action()
 		-- end, {
 		-- 	desc = "java create test",
 		-- 	noremap = true,
 		-- })
-		--
+
 		-- vim.keymap.set("n", "<leader>qf", function()
-  --     vim.diagnostic.setqflist()
+		--     vim.diagnostic.setqflist()
 		-- end, {
 		-- 	desc = "",
 		-- 	noremap = true,
