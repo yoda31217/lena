@@ -1,3 +1,7 @@
-[submodule "DbConnector"]
-	path = DbConnector
-	url = https://github.com/chaconinc/DbConnector
+[submodule "l-dependencies/microsoft/java-debug"]
+	path = l-dependencies/microsoft/java-debug
+	url = https://github.com/microsoft/java-debug.git
+
+[submodule "l-dependencies/nvchad"]
+	path = l-dependencies/nvchad
+	url = https://github.com/NvChad/NvChad.git
