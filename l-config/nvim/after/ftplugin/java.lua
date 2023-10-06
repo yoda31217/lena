@@ -109,7 +109,8 @@ local config = {
 		vim.keymap.set("n", "<leader>oi", function()
 			jdtls.organize_imports()
 		end, { desc = "organize imports" })
-		vim.keymap.set("n", "<leader>oa", function()
+
+		vim.keymap.set("n", "<leader>fm", function()
 			jdtls.organize_imports()
 			vim.lsp.buf.format()
 		end, {
@@ -124,72 +125,86 @@ local config = {
 			vim.lsp.diagnostic.set_loclist()
 		end, { desc = "" })
 
-		-- vim.keymap.set("v", "<leader>jev", function()
-		-- 	jdtls.extract_variable(true)
-		-- end, {
-		-- 	desc = "java extract selected to variable",
-		-- 	noremap = true,
-		-- })
-		-- vim.keymap.set("n", "<leader>jev", function()
-		-- 	jdtls.extract_variable()
-		-- end, {
-		-- 	desc = "java extract variable",
-		-- 	noremap = true,
-		-- })
+		vim.keymap.set("v", "<leader>ev", function()
+			jdtls.extract_variable(true)
+		end, {
+			desc = "java extract selected to variable",
+			noremap = true,
+		})
+		vim.keymap.set("n", "<leader>ev", function()
+			jdtls.extract_variable()
+		end, {
+			desc = "java extract variable",
+			noremap = true,
+		})
 		--
-		-- vim.keymap.set("v", "<leader>jeV", function()
+		-- vim.keymap.set("v", "<leader>ev", function()
 		-- 	jdtls.extract_variable_all(true)
 		-- end, {
 		-- 	desc = "java extract all selected to variable",
 		-- 	noremap = true,
 		-- })
-		-- vim.keymap.set("n", "<leader>jeV", function()
+		-- vim.keymap.set("n", "<leader>ev", function()
 		-- 	jdtls.extract_variable_all()
 		-- end, {
 		-- 	desc = "java extract all to variable",
 		-- 	noremap = true,
 		-- })
-		--
-		-- vim.keymap.set("n", "<leader>jec", function()
-		-- 	jdtls.extract_constant()
-		-- end, {
-		-- 	desc = "java extract constant",
-		-- 	noremap = true,
-		-- })
-		-- vim.keymap.set("v", "<leader>jec", function()
-		-- 	jdtls.extract_constant(true)
-		-- end, {
-		-- 	desc = "java extract selected to constant",
-		-- 	noremap = true,
-		-- })
-		--
-		-- vim.keymap.set("n", "<leader>jem", function()
-		-- 	jdtls.extract_method()
-		-- end, {
-		-- 	desc = "java extract method",
-		-- 	noremap = true,
-		-- })
-		-- vim.keymap.set("v", "<leader>jem", function()
-		-- 	jdtls.extract_method(true)
-		-- end, {
-		-- 	desc = "java extract selected to method",
-		-- 	noremap = true,
-		-- })
-		-- vim.keymap.set("n", "<leader>oT", function()
-		-- 	local plugin = require("jdtls.tests")
-		-- 	plugin.goto_subjects()
-		-- end, {
-		-- 	desc = "java open test",
-		-- 	noremap = true,
-		-- })
-		-- vim.keymap.set("n", "<leader>ct", function()
-		-- 	local plugin = require("jdtls.tests")
-		-- 	plugin.generate()
-		-- end, {
-		-- 	desc = "java create test",
-		-- 	noremap = true,
-		-- })
-		--
+
+		vim.keymap.set("n", "<leader>ec", function()
+			jdtls.extract_constant()
+		end, {
+			desc = "java extract constant",
+			noremap = true,
+		})
+		vim.keymap.set("v", "<leader>ec", function()
+			jdtls.extract_constant(true)
+		end, {
+			desc = "java extract selected to constant",
+			noremap = true,
+		})
+
+		vim.keymap.set("n", "<leader>em", function()
+			jdtls.extract_method()
+		end, {
+			desc = "java extract method",
+			noremap = true,
+		})
+		vim.keymap.set("v", "<leader>em", function()
+			jdtls.extract_method(true)
+		end, {
+			desc = "java extract selected to method",
+			noremap = true,
+		})
+		vim.keymap.set("n", "<leader>gt", function()
+			local plugin = require("jdtls.tests")
+			plugin.goto_subjects()
+		end, {
+			desc = "java open test",
+			noremap = true,
+		})
+		vim.keymap.set("n", "<leader>ct", function()
+			local plugin = require("jdtls.tests")
+			plugin.generate()
+		end, {
+			desc = "java create test",
+			noremap = true,
+		})
+
+		vim.keymap.set("n", "<leader>ca", function()
+      vim.lsp.buf.code_action()
+		end, {
+			desc = "java create test",
+			noremap = true,
+		})
+
+		vim.keymap.set("n", "<leader>qf", function()
+      vim.diagnostic.setqflist()
+		end, {
+			desc = "",
+			noremap = true,
+		})
+
 		-- vim.keymap.set("n", "<leader>jdm", function()
 		-- 	jdtls.test_nearest_method()
 		-- end, { desc = "java debug nearest test method" })
@@ -211,7 +226,7 @@ local config = {
 		-- lsp.on_attach(client, bufnr)
 	end,
 
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	-- capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
 
 require("jdtls").start_or_attach(config)
