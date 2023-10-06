@@ -20,190 +20,190 @@ local config = {
 
 	settings = {
 		java = {
-			errors = {
-				incompleteClasspath = {
-					severity = "warning",
-				},
-			},
-			eclipse = {
-				downloadSources = true,
-			},
-			configuration = {
-				updateBuildConfiguration = "interactive",
-				maven = {
-					userSettings = nil,
-				},
-			},
-			trace = {
-				server = "verbose",
-			},
-			import = {
-				gradle = {
-					enabled = true,
-				},
-				maven = {
-					enabled = true,
-				},
-				exclusions = {
-					"**/node_modules/**",
-					"**/.metadata/**",
-					"**/archetype-resources/**",
-					"**/META-INF/maven/**",
-					"/**/test/**",
-				},
-			},
-			maven = {
-				downloadSources = true,
-			},
-			referencesCodeLens = {
-				enabled = true,
-			},
-			implementationsCodeLens = {
-				enabled = true,
-			},
-			format = {
-				enabled = true,
-			},
-			saveActions = {
-				organizeImports = false,
-			},
-			contentProvider = {
-				preferred = nil,
-			},
-			autobuild = {
-				enabled = false,
-			},
-			references = {
-				includeDecompiledSources = true,
-			},
-			signatureHelp = { enabled = true },
-			completion = {
-				favoriteStaticMembers = {
-					"org.junit.Assert.*",
-					"org.junit.Assume.*",
-					"org.junit.jupiter.api.Assertions.*",
-					"org.junit.jupiter.api.Assumptions.*",
-					"org.junit.jupiter.api.DynamicContainer.*",
-					"org.junit.jupiter.api.DynamicTest.*",
-				},
-				importOrder = {
-					"java",
-					"javax",
-					"com",
-					"org",
-				},
-			},
-			sources = {
-				organizeImports = {
-					starThreshold = 9999,
-					staticStarThreshold = 9999,
-				},
-			},
+			-- errors = {
+			-- 	incompleteClasspath = {
+			-- 		severity = "warning",
+			-- 	},
+			-- },
+			-- eclipse = {
+			-- 	downloadSources = true,
+			-- },
+			-- configuration = {
+			-- 	updateBuildConfiguration = "interactive",
+			-- 	maven = {
+			-- 		userSettings = nil,
+			-- 	},
+			-- },
+			-- trace = {
+			-- 	server = "verbose",
+			-- },
+			-- import = {
+			-- 	gradle = {
+			-- 		enabled = true,
+			-- 	},
+			-- 	maven = {
+			-- 		enabled = true,
+			-- 	},
+			-- 	exclusions = {
+			-- 		"**/node_modules/**",
+			-- 		"**/.metadata/**",
+			-- 		"**/archetype-resources/**",
+			-- 		"**/META-INF/maven/**",
+			-- 		"/**/test/**",
+			-- 	},
+			-- },
+			-- maven = {
+			-- 	downloadSources = true,
+			-- },
+			-- referencesCodeLens = {
+			-- 	enabled = true,
+			-- },
+			-- implementationsCodeLens = {
+			-- 	enabled = true,
+			-- },
+			-- format = {
+			-- 	enabled = true,
+			-- },
+			-- saveActions = {
+			-- 	organizeImports = false,
+			-- },
+			-- contentProvider = {
+			-- 	preferred = nil,
+			-- },
+			-- autobuild = {
+			-- 	enabled = false,
+			-- },
+			-- references = {
+			-- 	includeDecompiledSources = true,
+			-- },
+			-- signatureHelp = { enabled = true },
+			-- completion = {
+			-- 	favoriteStaticMembers = {
+			-- 		"org.junit.Assert.*",
+			-- 		"org.junit.Assume.*",
+			-- 		"org.junit.jupiter.api.Assertions.*",
+			-- 		"org.junit.jupiter.api.Assumptions.*",
+			-- 		"org.junit.jupiter.api.DynamicContainer.*",
+			-- 		"org.junit.jupiter.api.DynamicTest.*",
+			-- 	},
+			-- 	importOrder = {
+			-- 		"java",
+			-- 		"javax",
+			-- 		"com",
+			-- 		"org",
+			-- 	},
+			-- },
+			-- sources = {
+			-- 	organizeImports = {
+			-- 		starThreshold = 9999,
+			-- 		staticStarThreshold = 9999,
+			-- 	},
+			-- },
 		},
 	},
 
 	on_attach = function(client, bufnr)
 		-- require("jdtls").setup_dap()
-		require("jdtls.setup").add_commands()
-
-		vim.keymap.set("n", "<leader>oi", function()
-			jdtls.organize_imports()
-		end, { desc = "organize imports" })
-
-		vim.keymap.set("n", "<leader>fm", function()
-			jdtls.organize_imports()
-			vim.lsp.buf.format()
-		end, {
-			desc = "organize all",
-		})
-
-		vim.keymap.set("n", "<leader>gr", function()
-			vim.lsp.buf.references()
-		end, { desc = "" })
-
-		vim.keymap.set("n", "<leader>dl", function()
-			vim.lsp.diagnostic.set_loclist()
-		end, { desc = "" })
-
-		vim.keymap.set("v", "<leader>ev", function()
-			jdtls.extract_variable(true)
-		end, {
-			desc = "java extract selected to variable",
-			noremap = true,
-		})
-		vim.keymap.set("n", "<leader>ev", function()
-			jdtls.extract_variable()
-		end, {
-			desc = "java extract variable",
-			noremap = true,
-		})
+		-- require("jdtls.setup").add_commands()
+		--
+		-- vim.keymap.set("n", "<leader>oi", function()
+		-- 	jdtls.organize_imports()
+		-- end, { desc = "organize imports" })
+		--
+		-- vim.keymap.set("n", "<leader>fm", function()
+		-- 	jdtls.organize_imports()
+		-- 	vim.lsp.buf.format()
+		-- end, {
+		-- 	desc = "organize all",
+		-- })
+		--
+		-- vim.keymap.set("n", "<leader>gr", function()
+		-- 	vim.lsp.buf.references()
+		-- end, { desc = "" })
+		--
+		-- vim.keymap.set("n", "<leader>dl", function()
+		-- 	vim.lsp.diagnostic.set_loclist()
+		-- end, { desc = "" })
 		--
 		-- vim.keymap.set("v", "<leader>ev", function()
-		-- 	jdtls.extract_variable_all(true)
+		-- 	jdtls.extract_variable(true)
 		-- end, {
-		-- 	desc = "java extract all selected to variable",
+		-- 	desc = "java extract selected to variable",
 		-- 	noremap = true,
 		-- })
 		-- vim.keymap.set("n", "<leader>ev", function()
-		-- 	jdtls.extract_variable_all()
+		-- 	jdtls.extract_variable()
 		-- end, {
-		-- 	desc = "java extract all to variable",
+		-- 	desc = "java extract variable",
 		-- 	noremap = true,
 		-- })
-
-		vim.keymap.set("n", "<leader>ec", function()
-			jdtls.extract_constant()
-		end, {
-			desc = "java extract constant",
-			noremap = true,
-		})
-		vim.keymap.set("v", "<leader>ec", function()
-			jdtls.extract_constant(true)
-		end, {
-			desc = "java extract selected to constant",
-			noremap = true,
-		})
-
-		vim.keymap.set("n", "<leader>em", function()
-			jdtls.extract_method()
-		end, {
-			desc = "java extract method",
-			noremap = true,
-		})
-		vim.keymap.set("v", "<leader>em", function()
-			jdtls.extract_method(true)
-		end, {
-			desc = "java extract selected to method",
-			noremap = true,
-		})
-		vim.keymap.set("n", "<leader>gt", function()
-			local plugin = require("jdtls.tests")
-			plugin.goto_subjects()
-		end, {
-			desc = "java open test",
-			noremap = true,
-		})
-		vim.keymap.set("n", "<leader>ct", function()
-			local plugin = require("jdtls.tests")
-			plugin.generate()
-		end, {
-			desc = "java create test",
-			noremap = true,
-		})
-
-		vim.keymap.set("n", "<leader>ca", function()
-      vim.lsp.buf.code_action()
-		end, {
-			desc = "java create test",
-			noremap = true,
-		})
-
-		vim.keymap.set("n", "<leader>qf", function()
-      vim.diagnostic.setqflist()
-		end, {
-			desc = "",
-			noremap = true,
-		})
+		-- --
+		-- -- vim.keymap.set("v", "<leader>ev", function()
+		-- -- 	jdtls.extract_variable_all(true)
+		-- -- end, {
+		-- -- 	desc = "java extract all selected to variable",
+		-- -- 	noremap = true,
+		-- -- })
+		-- -- vim.keymap.set("n", "<leader>ev", function()
+		-- -- 	jdtls.extract_variable_all()
+		-- -- end, {
+		-- -- 	desc = "java extract all to variable",
+		-- -- 	noremap = true,
+		-- -- })
+		--
+		-- vim.keymap.set("n", "<leader>ec", function()
+		-- 	jdtls.extract_constant()
+		-- end, {
+		-- 	desc = "java extract constant",
+		-- 	noremap = true,
+		-- })
+		-- vim.keymap.set("v", "<leader>ec", function()
+		-- 	jdtls.extract_constant(true)
+		-- end, {
+		-- 	desc = "java extract selected to constant",
+		-- 	noremap = true,
+		-- })
+		--
+		-- vim.keymap.set("n", "<leader>em", function()
+		-- 	jdtls.extract_method()
+		-- end, {
+		-- 	desc = "java extract method",
+		-- 	noremap = true,
+		-- })
+		-- vim.keymap.set("v", "<leader>em", function()
+		-- 	jdtls.extract_method(true)
+		-- end, {
+		-- 	desc = "java extract selected to method",
+		-- 	noremap = true,
+		-- })
+		-- vim.keymap.set("n", "<leader>gt", function()
+		-- 	local plugin = require("jdtls.tests")
+		-- 	plugin.goto_subjects()
+		-- end, {
+		-- 	desc = "java open test",
+		-- 	noremap = true,
+		-- })
+		-- vim.keymap.set("n", "<leader>ct", function()
+		-- 	local plugin = require("jdtls.tests")
+		-- 	plugin.generate()
+		-- end, {
+		-- 	desc = "java create test",
+		-- 	noremap = true,
+		-- })
+		--
+		-- vim.keymap.set("n", "<leader>ca", function()
+  --     vim.lsp.buf.code_action()
+		-- end, {
+		-- 	desc = "java create test",
+		-- 	noremap = true,
+		-- })
+		--
+		-- vim.keymap.set("n", "<leader>qf", function()
+  --     vim.diagnostic.setqflist()
+		-- end, {
+		-- 	desc = "",
+		-- 	noremap = true,
+		-- })
 
 		-- vim.keymap.set("n", "<leader>jdm", function()
 		-- 	jdtls.test_nearest_method()

@@ -21,19 +21,19 @@ M.abc = {
 		-- 	"Toggle horizontal term",
 		-- },
 		--
-		["<leader>fm"] = {
-			function()
-				vim.lsp.buf.format({
-					async = false,
-				})
-
-				vim.lsp.buf.execute_command({
-					command = "_typescript.organizeImports",
-					arguments = { vim.api.nvim_buf_get_name(0) },
-				})
-			end,
-			"Format and organize",
-		},
+		-- ["<leader>fm"] = {
+		-- 	function()
+		-- 		vim.lsp.buf.format({
+		-- 			async = false,
+		-- 		})
+		--
+		-- 		vim.lsp.buf.execute_command({
+		-- 			command = "_typescript.organizeImports",
+		-- 			arguments = { vim.api.nvim_buf_get_name(0) },
+		-- 		})
+		-- 	end,
+		-- 	"Format and organize",
+		-- },
 		-- ["gd"] = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "" },
 		-- ["K"] = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "" },
 		-- ["rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "" },
