@@ -1,8 +1,3 @@
-[submodule "l-nvchad-config/nvim"]
-	path = l-nvchad-config/nvim
-	url = https://github.com/NvChad/NvChad.git
-
-[submodule "microsotf/java-debug"]
-	path = microsotf/java-debug
-	url = https://github.com/microsoft/java-debug.git
-
+[submodule "DbConnector"]
+	path = DbConnector
+	url = https://github.com/chaconinc/DbConnector
