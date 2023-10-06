@@ -15,7 +15,7 @@ local config = {
 		"--jvm-arg=-Dlog.protocol=true",
 		"--jvm-arg=-Dlog.level=ALL",
 		"--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar",
-		-- "-data", "... WE NEED TO SET UP IT IN FUTURE; CURRENTLY UNIQUE PER PROJECT FOLDER NAME ",
+		"-data " .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lena_data",
 	},
 	root_dir = vim.fn.getcwd(),
 
