@@ -10,34 +10,33 @@ local utils = require("core.utils")
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#jdtls
 -- https://github.com/IlyasYOY/dotfiles/tree/master/config/nvim
 local config = {
-	cmd = {
-		vim.fn.stdpath("data") .. "/mason/packages/jdtls/bin/jdtls",
-		"--jvm-arg=-Dlog.protocol=true",
-		"--jvm-arg=-Dlog.level=ALL",
-		"--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar",
-		"-data " .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lena_data",
-	},
-	root_dir = vim.fn.getcwd(),
+  cmd = {
+    vim.fn.stdpath("data") .. "/mason/packages/jdtls/bin/jdtls",
+    "--jvm-arg=-Dlog.protocol=true",
+    "--jvm-arg=-Dlog.level=ALL",
+    "--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar",
+    "-data " .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lena_data",
+  },
+  root_dir = vim.fn.getcwd(),
 
-	settings = { java = {} },
+  settings = { java = {} },
 
-	on_attach = function(client, buffer)
-		utils.load_mappings("lspconfig", { buffer = buffer })
+  on_attach = function(client, buffer)
+    utils.load_mappings("lspconfig", { buffer = buffer })
 
-		vim.keymap.set("n", "<leader>fm", function()
-			vim.lsp.buf.format({ async = false })
-			jdtls.organize_imports()
-		end, { noremap = true, desc = "Organize Imports" })
-
-		vim.keymap.set("n", "<F5>", function()
-			print("clk")
+    vim.keymap.set("n", "<leader>fm", function()
+      vim.lsp.buf.format({ async = false })
+      jdtls.organize_imports()
+    end, { noremap = true, desc = "Organize Imports" })
+    vim.keymap.set("n", "<F5>", function()
+      print("clk")
       -- vim.cmd("term ")
-		end, { noremap = true, desc = "" })
+    end, { noremap = true, desc = "" })
 
-		jdtls.setup_dap({})
-	end,
+    jdtls.setup_dap({})
+  end,
 
-	init_options = { bundles = { vim.fn.glob("~/.config/nvim/java-debug/com.microsoft.java.debug.plugin-*.jar", 1) } },
+  init_options = { bundles = { vim.fn.glob("~/.config/nvim/java-debug/com.microsoft.java.debug.plugin-*.jar", 1) } },
 }
 
 jdtls.start_or_attach(config)
