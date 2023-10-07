@@ -28,6 +28,11 @@ local config = {
       vim.lsp.buf.format({ async = false })
       jdtls.organize_imports()
     end, { noremap = true, desc = "Organize Imports" })
+
+    vim.keymap.set("n", "<C-S-v>", function()
+      jdtls.extract_variable()
+    end, { noremap = true, desc = "Extract variable" })
+
     vim.keymap.set("n", "<F5>", function()
       print("clk")
       -- vim.cmd("term ")
