@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = {
-	theme = "kanagawa",
+	theme = "tomorrow_night",
 
 	telescope = {
 		style = "bordered",
