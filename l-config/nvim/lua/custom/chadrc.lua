@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = {
-	theme = "monekai",
+	theme = "bearded-arc",
 
 	telescope = {
 		style = "bordered",

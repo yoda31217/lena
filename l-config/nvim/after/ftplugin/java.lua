@@ -39,6 +39,7 @@ local config = {
     end, { noremap = true, desc = "" })
 
     jdtls.setup_dap({})
+    client.server_capabilities.semanticTokensProvider = nil
   end,
 
   init_options = { bundles = { vim.fn.glob("~/.config/nvim/java-debug/com.microsoft.java.debug.plugin-*.jar", 1) } },
