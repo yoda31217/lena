@@ -1,16 +1,17 @@
-local configs = require "plugins.configs.lspconfig"
+local configs = require("plugins.configs.lspconfig")
 local on_attach = configs.on_attach
 local capabilities = configs.capabilities
+local utils = require("core.utils")
 
 ---@diagnostic disable-next-line: different-requires
-local lspconfig = require "lspconfig"
+local lspconfig = require("lspconfig")
 local servers = { "html", "cssls", "clangd" }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  lspconfig[lsp].setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 end
 
 -- local function ts_organize_imports()
@@ -21,8 +22,11 @@ end
 --   vim.lsp.buf.execute_command(params)
 -- end
 
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
+lspconfig.tsserver.setup({
+  on_attach = function(client, buffer)
+    utils.load_mappings("lspconfig", { buffer = buffer })
+    on_attach(client, buffer)
+  end,
   capabilities = capabilities,
   -- commands = {
   --   OrganizeImports = {
@@ -30,7 +34,7 @@ lspconfig.tsserver.setup {
   --     description = "Organize Imports",
   --   },
   -- },
-}
+})
 
 -- Without the loop, you would have to manually set up each LSP
 --
