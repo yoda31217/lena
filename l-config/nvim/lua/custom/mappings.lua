@@ -13,11 +13,24 @@ M.abc = {
       "Toggle relatine line number in the current buffer",
     },
     ["<CR>"] = { "a<CR><ESC><RIGHT>", "Append New Line in Normal mode" },
+    ["<C-S-h>"] = {
+      function()
+        require("nvterm.terminal").toggle("horizontal")
+      end,
+      "Toggle horizontal term",
+    },
   },
 
   i = {},
 
-  t = {},
+  t = {
+    ["<C-S-h>"] = {
+      function()
+        require("nvterm.terminal").toggle("horizontal")
+      end,
+      "Toggle horizontal term",
+    },
+  },
 }
 
 return M
