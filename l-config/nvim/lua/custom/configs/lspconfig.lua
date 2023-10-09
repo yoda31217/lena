@@ -14,19 +14,22 @@ for _, lsp in ipairs(servers) do
   })
 end
 
--- local function ts_organize_imports()
---   local params = {
---     command = "_typescript.organizeImports",
---     arguments = { vim.api.nvim_buf_get_name(0) },
---   }
---   vim.lsp.buf.execute_command(params)
--- end
-
 lspconfig.tsserver.setup({
+
   on_attach = function(client, buffer)
     utils.load_mappings("lspconfig", { buffer = buffer })
+
+    vim.keymap.set("n", "<leader>fm", function()
+      vim.lsp.buf.format({ async = false })
+      vim.lsp.buf.execute_command({
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      })
+    end, { noremap = true, desc = "Format code" })
+
     on_attach(client, buffer)
   end,
+
   capabilities = capabilities,
   -- commands = {
   --   OrganizeImports = {
