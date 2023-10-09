@@ -27,6 +27,8 @@ lspconfig.tsserver.setup({
       })
     end, { noremap = true, desc = "Format code" })
 
+    require("refactoring").setup({})
+
     on_attach(client, buffer)
   end,
 

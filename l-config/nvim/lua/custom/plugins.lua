@@ -6,38 +6,45 @@ require("custom.configs.gitsigns")
 require("custom.configs.telescope")
 
 local plugins = {
-	-- Skeleton of this plugin configuration copy-pasted from NvChad
-	{
-		"neovim/nvim-lspconfig",
+  -- Skeleton of this plugin configuration copy-pasted from NvChad
+  {
+    "neovim/nvim-lspconfig",
 
-		dependencies = {
-			"jose-elias-alvarez/null-ls.nvim",
-			config = function()
-				require("custom.configs.null-ls")
-			end,
-		},
+    dependencies = {
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function()
+        require("custom.configs.null-ls")
+      end,
+    },
 
-		init = function()
-			require("core.utils").lazy_load("nvim-lspconfig")
-		end,
+    init = function()
+      require("core.utils").lazy_load("nvim-lspconfig")
+    end,
 
-		config = function()
-			require("plugins.configs.lspconfig")
-			require("custom.configs.lspconfig")
-		end,
-	},
+    config = function()
+      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
+    end,
+  },
 
-	{
-		"mfussenegger/nvim-jdtls",
-	},
+  {
+    "mfussenegger/nvim-jdtls",
+  },
 
-	{
-		"mfussenegger/nvim-dap",
-	},
+  {
+    "mfussenegger/nvim-dap",
+  },
 
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-	},
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
 }
 
 return plugins
