@@ -2,6 +2,7 @@ local configs = require("plugins.configs.lspconfig")
 local on_attach = configs.on_attach
 local capabilities = configs.capabilities
 local utils = require("core.utils")
+local telescope = require("telescope")
 
 ---@diagnostic disable-next-line: different-requires
 local lspconfig = require("lspconfig")
@@ -28,6 +29,12 @@ lspconfig.tsserver.setup({
     end, { noremap = true, desc = "Format code" })
 
     require("refactoring").setup({})
+
+    telescope.load_extension("refactoring")
+
+    vim.keymap.set({ "n", "x" }, "<C-S-r>", function()
+      telescope.extensions.refactoring.refactors()
+    end)
 
     on_attach(client, buffer)
   end,
