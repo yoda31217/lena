@@ -38,12 +38,19 @@ local plugins = {
   {
     "nvim-telescope/telescope-ui-select.nvim",
   },
+
   {
     "ThePrimeagen/refactoring.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+  },
+
+  {
+    "ThePrimeagen/vim-be-good",
+    lazy_load = false,
+    lazy = false,
   },
 }
 
