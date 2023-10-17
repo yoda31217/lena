@@ -10,7 +10,7 @@ local sources = {
   formatting.stylua,
 
   -- lint.shellcheck,
-  lint.eslint,
+  lint.eslint_d,
 }
 
 null_ls.setup({
