@@ -11,10 +11,19 @@ local plugins = {
     "neovim/nvim-lspconfig",
 
     dependencies = {
-      "jose-elias-alvarez/null-ls.nvim",
-      config = function()
-        require("custom.configs.null-ls")
-      end,
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+          require("custom.configs.null-ls")
+        end,
+      },
+      {
+        "antosha417/nvim-lsp-file-operations",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvim-neo-tree/neo-tree.nvim",
+        },
+      },
     },
 
     init = function()

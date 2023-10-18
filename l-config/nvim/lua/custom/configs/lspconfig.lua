@@ -48,6 +48,8 @@ lspconfig.tsserver.setup({
   -- },
 })
 
+require("lsp-file-operations").setup()
+
 -- Without the loop, you would have to manually set up each LSP
 --
 -- lspconfig.html.setup {
