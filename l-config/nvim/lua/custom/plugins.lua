@@ -73,6 +73,14 @@ local plugins = {
       })
     end,
   },
+
+  {
+    "rcarriga/nvim-notify",
+    lazy = false,
+    config = function()
+      vim.notify = require("notify")
+    end,
+  },
 }
 
 return plugins
