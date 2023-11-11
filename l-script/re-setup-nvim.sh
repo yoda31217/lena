@@ -7,7 +7,6 @@ set -e
 cd "$(dirname "$0")"
 
 cd ..
-
-rm -r ./*
+find . -name . -o -prune -exec rm -rf -- {} +
 
 git clone https://github.com/yoda31217/lena.git . && lena/l-script/setup-nvim.sh
