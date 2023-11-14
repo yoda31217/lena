@@ -16,6 +16,25 @@ M.abc = {
       end,
       "Toggle horizontal term",
     },
+    ["<leader>fi"] = {
+      function()
+        require("telescope.builtin").live_grep({
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+
+            "--follow",
+            "--no-ignore",
+          },
+        })
+      end,
+      "Live grep with no ignore",
+    },
   },
 
   i = {},
