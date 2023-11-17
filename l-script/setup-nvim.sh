@@ -11,10 +11,6 @@ cd ..
 git submodule init
 git submodule update
 
-cd l-dependencies/microsoft/java-debug
-./mvnw clean install
-cd ../../..
-
 ln -s "$(pwd)/l-config/nvim/after" l-dependencies/nvchad/after
 ln -s "$(pwd)/l-config/nvim/lua/custom" l-dependencies/nvchad/lua/custom
 ln -s "$(pwd)/l-dependencies/microsoft/java-debug/com.microsoft.java.debug.plugin/target" l-dependencies/nvchad/java-debug
@@ -22,3 +18,8 @@ ln -s "$(pwd)/l-dependencies/microsoft/java-debug/com.microsoft.java.debug.plugi
 # We cannot UNDO changes below
 ./l-script/reset-nvim.sh
 ln -s "$(pwd)/l-dependencies/nvchad" ~/.config/nvim
+
+cd l-dependencies/microsoft/java-debug
+./mvnw clean install
+cd ../../..
+
