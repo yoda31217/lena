@@ -81,6 +81,10 @@ local plugins = {
       vim.notify = require("notify")
     end,
   },
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  },
 }
 
 return plugins
