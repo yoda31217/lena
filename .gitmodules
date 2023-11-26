@@ -1,7 +1,6 @@
 [submodule "l-dependencies/microsoft/java-debug"]
 	path = l-dependencies/microsoft/java-debug
 	url = https://github.com/microsoft/java-debug.git
-  branch = 0.49.0
 
 [submodule "l-dependencies/nvchad"]
 	path = l-dependencies/nvchad
