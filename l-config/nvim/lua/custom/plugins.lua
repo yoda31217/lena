@@ -79,6 +79,11 @@ local plugins = {
     lazy = false,
     config = function()
       vim.notify = require("notify")
+      vim.notify.setup({
+        minimum_width = 30,
+        max_width = 50,
+        render = "wrapped-compact",
+      })
     end,
   },
 
