@@ -12,6 +12,7 @@ treesitter_config.ensure_installed = {
 	"java",
 	"c",
 	"zig",
+	"python",
 }
 
 treesitter_config.incremental_selection = {

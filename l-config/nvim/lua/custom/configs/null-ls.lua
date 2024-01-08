@@ -2,15 +2,20 @@
 
 local null_ls = require("null-ls")
 
-local formatting = null_ls.builtins.formatting
-local lint = null_ls.builtins.diagnostics
-
 local sources = {
-  formatting.prettier.with({ extra_args = { "--single-quote", "--print-width", "120" } }),
-  formatting.stylua,
+  -- python
+  null_ls.builtins.diagnostics.mypy,
+  null_ls.builtins.diagnostics.ruff,
+  -- null_ls.builtins.formatting.ruff,
+  -- migrate to ruff or blackd
+  null_ls.builtins.formatting.black,
 
-  -- lint.shellcheck,
-  lint.eslint_d,
+  -- lua
+  null_ls.builtins.formatting.stylua,
+
+  -- ts/js/tsx/jsx
+  null_ls.builtins.formatting.prettier.with({ extra_args = { "--single-quote", "--print-width", "120" } }),
+  null_ls.builtins.diagnostics.eslint_d,
 }
 
 null_ls.setup({
