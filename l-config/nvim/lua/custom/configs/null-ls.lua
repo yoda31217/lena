@@ -4,7 +4,13 @@ local null_ls = require("null-ls")
 
 local sources = {
   -- python
-  null_ls.builtins.diagnostics.mypy,
+  -- null_ls.builtins.diagnostics.mypy.with({
+  --   extra_args = {
+  --     "--python-executable",
+  --     "/Users/nikita/Documents/projects/uniqantiq-hardware-supply/amazon-extension/projects/analytics/a7s-dash/.venv/bin/python3",
+  --   },
+  -- }),
+  -- null_ls.builtins.diagnostics.mypy,
   null_ls.builtins.diagnostics.ruff,
   -- null_ls.builtins.formatting.ruff,
   -- migrate to ruff or blackd
