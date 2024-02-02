@@ -17,7 +17,19 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.pyright.setup({
-  on_attach = on_attach,
+  on_attach = function(client, buffer)
+    utils.load_mappings("lspconfig", { buffer = buffer })
+
+    vim.keymap.set("n", "<leader>fm", function()
+      vim.lsp.buf.format({ async = false })
+      vim.lsp.buf.execute_command({
+        command = "pyright.organizeimports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      })
+    end, { noremap = true, desc = "Format code" })
+
+    on_attach(client, buffer)
+  end,
   capabilities = capabilities,
   filetypes = { "python" },
 })
