@@ -1013,23 +1013,33 @@ require("lazy").setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
 }, {
+  -- lazy.nvim icons
+  -- Replaced all non stardard according to:
+  -- https://github.com/folke/lazy.nvim/blob/main/lua/lazy/core/config.lua
   ui = {
-    -- If you have a Nerd Font, set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = "⌘",
-      config = "🛠",
-      event = "📅",
-      ft = "📂",
-      init = "⚙",
-      keys = "🗝",
-      plugin = "🔌",
-      runtime = "💻",
-      require = "🌙",
-      source = "📄",
-      start = "🚀",
-      task = "📌",
-      lazy = "💤 ",
+    icons = {
+      cmd = "command: ",
+      config = "config: ",
+      event = "event: ",
+      ft = "filetype: ",
+      init = "init: ",
+      import = "import: ",
+      keys = "keys: ",
+      lazy = "lazy: ",
+      loaded = "[+]",
+      not_loaded = "[ ]",
+      plugin = "plugin: ",
+      runtime = "runtime: ",
+      require = "require: ",
+      source = "source: ",
+      start = "start: ",
+      task = "task: ",
+      list = {
+        "[+]",
+        "->",
+        "*",
+        "‒",
+      },
     },
   },
 })
