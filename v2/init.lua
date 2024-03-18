@@ -186,6 +186,8 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+vim.keymap.set("n", "<leader><cr>", "<cmd>source %<cr>", { desc = "Source This" })
+
 -- Buffer keymaps
 vim.keymap.set("n", "<leader>x", function()
   local current_buffer_handle = vim.api.nvim_get_current_buf()
