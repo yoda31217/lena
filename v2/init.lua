@@ -192,6 +192,9 @@ vim.keymap.set("n", "<leader><cr>", "<cmd>source %<cr>", { desc = "Source This" 
 vim.keymap.set("n", "<leader>jc", "I{ /* <esc>A */ }<esc>j^", { desc = "[J]SX [C]omment markdown" })
 vim.keymap.set("n", "<leader>ju", "^vf/f*whd$vF/F*beldj^", { desc = "[J]SX [U]ncomment markdown" })
 
+-- Clipboard
+vim.keymap.set("v", "<leader>p", "\"_dp", { desc = "[P]aste into selected w/o copy" })
+
 -- Buffer keymaps
 vim.keymap.set("n", "<leader>x", function()
   local current_buffer_handle = vim.api.nvim_get_current_buf()
