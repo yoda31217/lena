@@ -188,6 +188,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 vim.keymap.set("n", "<leader><cr>", "<cmd>source %<cr>", { desc = "Source This" })
 
+-- JSX comment/uncomment
+vim.keymap.set("n", "<leader>jc", "I{ /* <esc>A */ }<esc>j^", { desc = "[J]SX [C]omment markdown" })
+vim.keymap.set("n", "<leader>ju", "^vf/f*whd$vF/F*beldj^", { desc = "[J]SX [U]ncomment markdown" })
+
 -- Buffer keymaps
 vim.keymap.set("n", "<leader>x", function()
   local current_buffer_handle = vim.api.nvim_get_current_buf()
