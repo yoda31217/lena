@@ -188,12 +188,8 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 
 vim.keymap.set("n", "<leader><cr>", "<cmd>source %<cr>", { desc = "Source This" })
 
--- JSX comment/uncomment
-vim.keymap.set("n", "<leader>jc", "I{ /* <esc>A */ }<esc>j^", { desc = "[J]SX [C]omment markdown" })
-vim.keymap.set("n", "<leader>ju", "^vf/f*whd$vF/F*beldj^", { desc = "[J]SX [U]ncomment markdown" })
-
 -- Clipboard
-vim.keymap.set("v", "<leader>p", "\"_dp", { desc = "[P]aste into selected w/o copy" })
+vim.keymap.set("v", "<leader>p", '"_dp', { desc = "[P]aste into selected w/o copy" })
 
 -- Buffer keymaps
 vim.keymap.set("n", "<leader>x", function()
@@ -268,12 +264,6 @@ require("lazy").setup({
   -- keys can be used to configure plugin behavior/loading/etc.
   --
   -- Use `opts = {}` to force a plugin to be loaded.
-  --
-  --  This is equivalent to:
-  --    require('Comment').setup({})
-
-  -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following lua:
@@ -826,6 +816,7 @@ require("lazy").setup({
 
   { -- Collection of various small independent plugins/modules
     "echasnovski/mini.nvim",
+    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
     config = function()
       -- Better Around/Inside textobjects
       --
@@ -834,6 +825,18 @@ require("lazy").setup({
       --  - yinq - [Y]ank [I]nside [N]ext [']quote
       --  - ci'  - [C]hange [I]nside [']quote
       require("mini.ai").setup({ n_lines = 500 })
+
+      -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#minicomment
+      require("ts_context_commentstring").setup({
+        enable_autocmd = false,
+      })
+      require("mini.comment").setup({
+        options = {
+          custom_commentstring = function()
+            return require("ts_context_commentstring").calculate_commentstring() or vim.bo.commentstring
+          end,
+        },
+      })
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
