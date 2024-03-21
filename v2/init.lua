@@ -829,6 +829,7 @@ require("lazy").setup({
       require("mini.ai").setup({ n_lines = 500 })
 
       -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#minicomment
+      ---@diagnostic disable-next-line: missing-fields
       require("ts_context_commentstring").setup({
         enable_autocmd = false,
       })
