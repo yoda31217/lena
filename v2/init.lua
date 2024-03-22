@@ -518,14 +518,14 @@ require("lazy").setup({
         { desc = '[S]earch Recent Files ("." for repeat)' }
       )
 
-      local entry_display = require("telescope.pickers.entry_display")
-      local actions = require("telescope.actions")
-      local actions_state = require("telescope.actions.state")
-      local action_set = require("telescope.actions.set")
-      local Path = require("plenary.path")
-      local make_entry = require("telescope.make_entry")
-
       vim.keymap.set("n", "<leader><leader>", function()
+        local entry_display = require("telescope.pickers.entry_display")
+        local actions = require("telescope.actions")
+        local actions_state = require("telescope.actions.state")
+        local action_set = require("telescope.actions.set")
+        local path = require("plenary.path")
+        local make_entry = require("telescope.make_entry")
+
         local displayer = entry_display.create({
           separator = " ",
           items = {
@@ -551,27 +551,7 @@ require("lazy").setup({
             end,
           },
           attach_mappings = function(prompt_bufnr, map)
-            local function next_color(bufnr)
-              -- require("telescope.actions").move_selection_next(bufnr)
-              -- local selected = require("telescope.actions.state").get_selected_entry()
-              -- local selected = require("telescope.actions.state").get_current_picker(bufnr)
-              -- local cmd = "colorscheme " .. selected[1]
-              -- vim.cmd('echo "' .. cmd .. '"')
-              -- print(vim.inspect(selected.filename))
-              -- print(bufnr)
-              -- print(prompt_bufnr)
-              -- local entries = require("telescope.actions.state").get_current_picker(bufnr).finder.results
-              -- print(vim.inspect(entries[1]))
-              -- vim.cmd("buffer " .. entries[2].bufnr)
-              -- print(vim.inspect(selected.finder.results))
-              -- print(vim.inspect(selected))
-              -- print(vim.inspect("asd"))
-              -- local recent_buffer_entries = actions_state.get_current_picker(bufnr).finder.results
-              -- local target_recent_buffer_entry = recent_buffer_entries[target_buffer_index]
-              -- action_set.edit(prompt_bufnr, "edit")
-              -- actions.close(prompt_bufnr)
-
-              local target_buffer_index = 2
+            local function select_buffer_by_index(target_buffer_index)
               local selected_buffer_entry = actions_state.get_selected_entry()
               local selected_buffer_index = selected_buffer_entry.index
               local target_buffer_offset = selected_buffer_index
@@ -580,16 +560,18 @@ require("lazy").setup({
               actions.select_default(prompt_bufnr)
             end
 
-            -- print("adasd")
-            map("n", "0", next_color)
-            -- map("n", "<c-space>", '<cmd>echo "qwe"<rc>')
+            for i = 0, 9 do
+              map("n", i .. "", function()
+                select_buffer_by_index(i + 1)
+              end)
+            end
+
             return true
           end,
           entry_maker = function(entry)
             local filename = entry.info.name ~= "" and entry.info.name
               or "[No Name]"
-            -- if bufname is inside the cwd, trim that part of the string
-            filename = Path:new(filename):normalize(cwd)
+            filename = path:new(filename):normalize(cwd)
 
             return make_entry.set_default_entry_mt({
               value = entry,
@@ -600,7 +582,7 @@ require("lazy").setup({
             }, {})
           end,
         })
-      end, { desc = "Switch opened buffer" })
+      end, { desc = "Switch opened buffer by [0-9]" })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>/", function()
