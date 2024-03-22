@@ -196,7 +196,7 @@ vim.keymap.set("n", "<leader>x", function()
   local current_buffer_handle = vim.api.nvim_get_current_buf()
   vim.cmd("bprevious")
   vim.api.nvim_buf_delete(current_buffer_handle, {})
-end, { desc = "Current [B]uffer [D]elete" })
+end, { desc = "Current buffer close" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
