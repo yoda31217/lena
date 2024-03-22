@@ -519,8 +519,8 @@ require("lazy").setup({
       )
 
       vim.keymap.set("n", "<leader><leader>", function()
-        require("recent_buffers").show_recent_buffers()
-      end, { desc = "Switch opened buffer by [0-9]" })
+        require("recent_buffers").show()
+      end, { desc = "Show recent buffers" })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>/", function()

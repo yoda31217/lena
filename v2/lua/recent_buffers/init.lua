@@ -21,6 +21,7 @@ local make_display = function(entry)
   })
 end
 
+---@diagnostic disable-next-line: undefined-field
 local cwd = vim.fn.expand(vim.loop.cwd())
 
 local function show_recent_buffers()
@@ -91,5 +92,5 @@ local function show_recent_buffers()
 end
 
 return {
-  show_recent_buffers = show_recent_buffers,
+  show = show_recent_buffers,
 }
