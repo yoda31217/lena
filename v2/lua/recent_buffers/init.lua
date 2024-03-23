@@ -44,21 +44,38 @@ local function entry_maker(entry)
   }, {})
 end
 
+local show_recent_buffers
+
+local function get_selected_buffer_index()
+  return actions_state.get_selected_entry().index
+end
+
+local function get_buffers_count(prompt_bufnr)
+  return #actions_state.get_current_picker(prompt_bufnr).finder.results
+end
+
 local function select_buffer_by_index(target_buffer_index, prompt_bufnr)
-  local selected_buffer_entry = actions_state.get_selected_entry()
-  local selected_buffer_index = selected_buffer_entry.index
+  local selected_buffer_index = get_selected_buffer_index()
   local target_buffer_offset = selected_buffer_index - target_buffer_index
   action_set.shift_selection(prompt_bufnr, target_buffer_offset)
   actions.select_default(prompt_bufnr)
 end
 
 local function delete_selected_buffer(prompt_bufnr)
+  local selected_buffer_index = get_selected_buffer_index()
+  local buffers_count = get_buffers_count(prompt_bufnr)
   actions.delete_buffer(prompt_bufnr)
   actions.close(prompt_bufnr)
+  show_recent_buffers({
+    default_selection_index = math.min(
+      selected_buffer_index,
+      buffers_count - 1
+    ),
+  })
 end
 
-local function show_recent_buffers()
-  builtin.buffers({
+show_recent_buffers = function(opts)
+  opts = vim.tbl_extend("force", {
     sort_mru = true,
     on_complete = {
       function()
@@ -66,6 +83,8 @@ local function show_recent_buffers()
       end,
     },
     attach_mappings = function(prompt_bufnr, map)
+      -- print(prompt_bufnr)
+
       for i = 0, 9 do
         map("n", i .. "", function()
           select_buffer_by_index(i + 1, prompt_bufnr)
@@ -73,12 +92,13 @@ local function show_recent_buffers()
       end
       map("n", "x", function()
         delete_selected_buffer(prompt_bufnr)
-        show_recent_buffers()
       end)
       return true
     end,
     entry_maker = entry_maker,
-  })
+  }, opts or {})
+
+  builtin.buffers(opts)
 end
 
 return {
