@@ -58,7 +58,15 @@ local function select_buffer_by_index(target_buffer_index, prompt_bufnr)
   local selected_buffer_index = get_selected_buffer_index()
   local target_buffer_offset = selected_buffer_index - target_buffer_index
   action_set.shift_selection(prompt_bufnr, target_buffer_offset)
+end
+
+local function open_selected_buffer(prompt_bufnr)
   actions.select_default(prompt_bufnr)
+end
+
+local function open_buffer_by_index(target_buffer_index, prompt_bufnr)
+  select_buffer_by_index(target_buffer_index, prompt_bufnr)
+  open_selected_buffer(prompt_bufnr)
 end
 
 local function delete_selected_buffer(prompt_bufnr)
@@ -87,7 +95,7 @@ show_recent_buffers = function(opts)
 
       for i = 0, 9 do
         map("n", i .. "", function()
-          select_buffer_by_index(i + 1, prompt_bufnr)
+          open_buffer_by_index(i + 1, prompt_bufnr)
         end)
       end
       map("n", "x", function()
