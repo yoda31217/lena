@@ -2,9 +2,10 @@ local pickers_entry_display = require("telescope.pickers.entry_display")
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local action_set = require("telescope.actions.set")
-local path = require("plenary.path")
+local Path = require("plenary.path")
 local make_entry = require("telescope.make_entry")
 local builtin = require("telescope.builtin")
+local utils = require("telescope.utils")
 
 ---@diagnostic disable-next-line: undefined-field
 local cwd = vim.fn.expand(vim.loop.cwd())
@@ -14,25 +15,32 @@ local displayer = pickers_entry_display.create({
   items = {
     { width = 2 },
     { remaining = true },
+    { remaining = true },
   },
 })
 
 local make_display = function(entry)
   return displayer({
     { entry.index - 1, "TelescopeResultsNumber" },
-    entry.filename,
+    { entry.filename, "TelescopeMatching" },
+    entry.directory,
   })
 end
 
 local function entry_maker(entry)
-  local filename = entry.info.name ~= "" and entry.info.name or "[No Name]"
-  filename = path:new(filename):normalize(cwd)
+  local absolute_file_path = entry.info.name ~= "" and entry.info.name
+    or "[No Name]"
+  local filename = utils.path_tail(absolute_file_path)
+  local absolute_directory_path = Path:new(absolute_file_path):parent()
+  local relative_directory_path = Path:new(absolute_directory_path)
+    :normalize(cwd)
 
   return make_entry.set_default_entry_mt({
     value = entry,
-    ordinal = entry.bufnr .. " : " .. filename,
+    ordinal = absolute_file_path,
     display = make_display,
     filename = filename,
+    directory = relative_directory_path,
     bufnr = entry.bufnr,
   }, {})
 end
