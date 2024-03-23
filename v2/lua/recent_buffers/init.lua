@@ -22,8 +22,8 @@ local displayer = pickers_entry_display.create({
 local make_display = function(entry)
   return displayer({
     { entry.index - 1, "TelescopeResultsNumber" },
-    { entry.filename_tail, "TelescopeMatching" },
-    entry.directory,
+    { entry.filename_tail, "TelescopeResultsNormal" },
+    { entry.directory, "TelescopeResultsComment" },
   })
 end
 
