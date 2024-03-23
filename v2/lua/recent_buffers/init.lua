@@ -6,6 +6,7 @@ local Path = require("plenary.path")
 local make_entry = require("telescope.make_entry")
 local builtin = require("telescope.builtin")
 local utils = require("telescope.utils")
+local themes = require("telescope.themes")
 
 ---@diagnostic disable-next-line: undefined-field
 local cwd = vim.fn.expand(vim.loop.cwd())
@@ -50,13 +51,17 @@ local function get_selected_buffer_index()
   return actions_state.get_selected_entry().index
 end
 
+local function get_buffer_entries(prompt_bufnr)
+  return actions_state.get_current_picker(prompt_bufnr).finder.results
+end
+
 local function get_buffers_count(prompt_bufnr)
-  return #actions_state.get_current_picker(prompt_bufnr).finder.results
+  return #get_buffer_entries(prompt_bufnr)
 end
 
 local function select_buffer_by_index(target_buffer_index, prompt_bufnr)
   local selected_buffer_index = get_selected_buffer_index()
-  local target_buffer_offset = selected_buffer_index - target_buffer_index
+  local target_buffer_offset = target_buffer_index - selected_buffer_index
   action_set.shift_selection(prompt_bufnr, target_buffer_offset)
 end
 
@@ -83,28 +88,37 @@ local function delete_selected_buffer(prompt_bufnr)
 end
 
 show_recent_buffers = function(opts)
-  opts = vim.tbl_extend("force", {
-    sort_mru = true,
-    on_complete = {
-      function()
-        vim.cmd("stopinsert")
-      end,
-    },
-    attach_mappings = function(prompt_bufnr, map)
-      -- print(prompt_bufnr)
-
-      for i = 0, 9 do
-        map("n", i .. "", function()
-          open_buffer_by_index(i + 1, prompt_bufnr)
+  opts = vim.tbl_extend(
+    "force",
+    themes.get_dropdown({
+      winblend = 10,
+      previewer = false,
+    }),
+    {
+      sort_mru = true,
+      on_complete = {
+        function()
+          vim.cmd("stopinsert")
+        end,
+      },
+      attach_mappings = function(prompt_bufnr, map)
+        for i = 0, 9 do
+          map("n", i .. "", function()
+            open_buffer_by_index(i + 1, prompt_bufnr)
+          end)
+        end
+        map("n", "x", function()
+          delete_selected_buffer(prompt_bufnr)
         end)
-      end
-      map("n", "x", function()
-        delete_selected_buffer(prompt_bufnr)
-      end)
-      return true
-    end,
-    entry_maker = entry_maker,
-  }, opts or {})
+        -- map("n", "d", function()
+        --   print(vim.inspect(get_buffer_entries(prompt_bufnr)))
+        -- end)
+        return true
+      end,
+      entry_maker = entry_maker,
+    },
+    opts or {}
+  )
 
   builtin.buffers(opts)
 end
