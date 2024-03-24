@@ -47,8 +47,12 @@ end
 
 local show_recent_buffers
 
+local function get_selected_buffer_entry()
+  return actions_state.get_selected_entry()
+end
+
 local function get_selected_buffer_index()
-  return actions_state.get_selected_entry().index
+  return get_selected_buffer_entry().index
 end
 
 local function get_buffer_entries(prompt_bufnr)
@@ -113,6 +117,18 @@ show_recent_buffers = function(opts)
         -- map("n", "d", function()
         --   print(vim.inspect(get_buffer_entries(prompt_bufnr)))
         -- end)
+        -- action_set.shift_selection:enhance({
+        --   post = function()
+        --     local selected_buffer_index = get_selected_buffer_index()
+        --     -- print(vim.inspect(get_selected_buffer_entry()))
+        --     -- print(vim.inspect(get_selected_buffer_entry().bufnr))
+        --     vim.cmd("buffer! " .. get_selected_buffer_entry().bufnr)
+        --     show_recent_buffers({
+        --       default_selection_index = selected_buffer_index,
+        --     })
+        --     -- actions.file_edit(prompt_bufnr)
+        --   end,
+        -- })
         return true
       end,
       entry_maker = entry_maker,
