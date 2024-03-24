@@ -123,9 +123,9 @@ show_recent_buffers = function(opts)
   builtin.buffers(opts)
 end
 
--- vim.keymap.set("n", "<tab>", function()
---   show_recent_buffers()
--- end, { desc = "Test" })
+vim.keymap.set("n", "<tab>", function()
+  show_recent_buffers()
+end, { desc = "Show recent buffers" })
 
 return {
   show = show_recent_buffers,

@@ -518,10 +518,6 @@ require("lazy").setup({
         { desc = '[S]earch Recent Files ("." for repeat)' }
       )
 
-      vim.keymap.set("n", "<leader><leader>", function()
-        require("recent_buffers").show()
-      end, { desc = "Show recent buffers" })
-
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>/", function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
@@ -1234,6 +1230,9 @@ require("lazy").setup({
     },
   },
 })
+
+-- In development phase:
+require("recent_buffers")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
