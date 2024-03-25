@@ -960,7 +960,7 @@ require("lazy").setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme("tokyonight-night")
+      -- vim.cmd.colorscheme("tokyonight-night")
 
       -- You can configure highlights by doing something like
       -- vim.cmd.hi("Comment gui=none")
@@ -1022,6 +1022,10 @@ require("lazy").setup({
       -- statusline.section_location = function()
       --   return "%2l:%-2v"
       -- end
+
+      require("mini.colors").setup()
+      vim.cmd.colorscheme("minicyan")
+      -- vim.cmd.colorscheme("minischeme")
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
