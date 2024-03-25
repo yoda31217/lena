@@ -1027,6 +1027,8 @@ require("lazy").setup({
       vim.cmd.colorscheme("minicyan")
       -- vim.cmd.colorscheme("minischeme")
 
+      require("mini.visits").setup()
+
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
@@ -1111,6 +1113,7 @@ require("lazy").setup({
             },
           },
         },
+        use_libuv_file_watcher = false,
         filesystem = {
           filtered_items = {
             hide_dotfiles = false,
