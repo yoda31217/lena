@@ -19,7 +19,7 @@ local displayer = pickers_entry_display.create({
 
 local make_display = function(entry)
   return displayer({
-    { entry.index - 1, "TelescopeResultsNumber" },
+    { entry.index, "TelescopeResultsNumber" },
     { entry.filename_tail, "TelescopeResultsNormal" },
     { entry.directory, "TelescopeResultsComment" },
   })
@@ -85,9 +85,9 @@ show_recent_files = function(opts)
       cwd_only = false,
       entry_maker = entry_maker,
       attach_mappings = function(prompt_bufnr, map)
-        for i = 0, 9 do
+        for i = 1, 9 do
           map("n", i .. "", function()
-            open_entry_by_index(i + 1, prompt_bufnr)
+            open_entry_by_index(i, prompt_bufnr)
           end)
         end
         return true
