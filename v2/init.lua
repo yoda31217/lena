@@ -1098,6 +1098,7 @@ require("lazy").setup({
             folder_closed = "+",
             folder_open = "-",
             folder_empty = " ",
+            default = " ",
           },
           git_status = {
             symbols = {
