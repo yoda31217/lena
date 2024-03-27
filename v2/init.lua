@@ -1114,7 +1114,7 @@ require("lazy").setup({
             },
           },
         },
-        use_libuv_file_watcher = false,
+        use_libuv_file_watcher = true,
         filesystem = {
           filtered_items = {
             hide_dotfiles = false,
