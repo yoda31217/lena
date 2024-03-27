@@ -20,26 +20,31 @@ local displayer = pickers_entry_display.create({
 local make_display = function(entry)
   return displayer({
     { entry.index, "TelescopeResultsNumber" },
-    { entry.file_name, "TelescopeResultsNormal" },
-    { entry.relative_directory_path, "TelescopeResultsComment" },
+    {
+      entry.file_name,
+      not entry.is_file_relative and "TelescopeResultsTitle"
+        or "TelescopeResultsNormal",
+    },
+    { entry.directory_path, "TelescopeResultsComment" },
   })
+end
+
+local function is_file_in_directory(file_path, directory_path)
+  return Path:new(file_path):absolute()
+    ~= Path:new(file_path):make_relative(directory_path)
 end
 
 local function entry_maker(file_path)
   ---@diagnostic disable-next-line: undefined-field
-  local cwd = vim.fn.expand(vim.loop.cwd())
-
-  local file_name = utils.path_tail(file_path)
-  local absolute_directory_path = Path:new(file_path):parent()
-  local relative_directory_path = Path:new(absolute_directory_path)
-    :normalize(cwd)
+  local current_directory = vim.fn.expand(vim.loop.cwd())
 
   return make_entry.set_default_entry_mt({
     path = file_path,
     ordinal = file_path,
     display = make_display,
-    file_name = file_name,
-    relative_directory_path = relative_directory_path,
+    file_name = utils.path_tail(file_path),
+    directory_path = Path:new(file_path):parent():normalize(current_directory),
+    is_file_relative = is_file_in_directory(file_path, current_directory),
   }, {})
 end
 
