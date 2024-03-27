@@ -1239,7 +1239,7 @@ require("lazy").setup({
 })
 
 -- In development phase:
-require("recent_buffers")
+require("recent_files")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
