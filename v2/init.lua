@@ -213,6 +213,20 @@ vim.keymap.set(
   { desc = "Source This" }
 )
 
+vim.keymap.set(
+  "n",
+  "<leader>ms",
+  "<cmd>messages<cr>",
+  { desc = "[M]essages [S]how" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>mc",
+  "<cmd>messages clear<cr>",
+  { desc = "[M]essages [C]lear" }
+)
+
 -- Clipboard
 vim.keymap.set(
   "v",
