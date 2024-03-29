@@ -17,21 +17,32 @@ local displayer = pickers_entry_display.create({
   },
 })
 
+-- This logic should be customizable
+local function calculate_entry_highlighting_group(entry)
+  if string.find(entry.path, "node_modules/") then
+    return "TelescopeResultsComment"
+  elseif entry.is_file_relative then
+    return "TelescopeResultsNormal"
+  else
+    return "TelescopeResultsNumber"
+  end
+end
+
 local make_display = function(entry)
   return displayer({
-    { entry.index, "TelescopeResultsNumber" },
+    { entry.index, "TelescopeResultsIdentifier" },
     {
       entry.file_name,
-      not entry.is_file_relative and "TelescopeResultsTitle"
-        or "TelescopeResultsNormal",
+      calculate_entry_highlighting_group(entry),
     },
-    { entry.directory_path, "TelescopeResultsComment" },
+    { entry.directory_path, "TelescopeResultsTitle" },
   })
 end
 
 local function is_file_in_directory(file_path, directory_path)
-  return Path:new(file_path):absolute()
-    ~= Path:new(file_path):make_relative(directory_path)
+  local absolute_file_path = Path:new(file_path):absolute()
+  local relative_file_path = Path:new(file_path):make_relative(directory_path)
+  return absolute_file_path ~= relative_file_path
 end
 
 local function entry_maker(file_path)
