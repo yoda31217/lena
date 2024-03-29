@@ -22,7 +22,7 @@ local function calculate_entry_highlighting_group(entry)
   if string.find(entry.path, "node_modules/") then
     return "TelescopeResultsComment"
   elseif entry.is_file_relative then
-    return "TelescopeResultsNormal"
+    return "MiniFilesFile"
   else
     return "TelescopeResultsNumber"
   end
