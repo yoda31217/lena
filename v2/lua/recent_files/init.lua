@@ -113,7 +113,7 @@ show_recent_files = function(opts)
   ))
 end
 
-vim.keymap.set("n", "<tab>", function()
+vim.keymap.set("n", "<leader>j", function()
   show_recent_files()
 end, { desc = "Show recent files" })
 
