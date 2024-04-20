@@ -693,8 +693,13 @@ require("lazy").setup({
 
           map("<leader>f", function()
             require("conform").format({}, function()
+              -- Add ability to enable needed organize imports
               vim.lsp.buf.execute_command({
                 command = "_typescript.organizeImports",
+                arguments = { vim.api.nvim_buf_get_name(0) },
+              })
+              vim.lsp.buf.execute_command({
+                command = "pyright.organizeimports",
                 arguments = { vim.api.nvim_buf_get_name(0) },
               })
             end)
@@ -745,7 +750,7 @@ require("lazy").setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -793,8 +798,6 @@ require("lazy").setup({
         "prettierd",
         "typescript-language-server",
         "pyright",
-        "mypy",
-        "ruff",
         "black",
       })
       require("mason-tool-installer").setup({
@@ -838,7 +841,7 @@ require("lazy").setup({
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { "black" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.

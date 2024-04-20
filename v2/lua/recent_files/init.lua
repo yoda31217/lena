@@ -19,7 +19,10 @@ local displayer = pickers_entry_display.create({
 
 -- This logic should be customizable
 local function calculate_entry_highlighting_group(entry)
-  if string.find(entry.path, "node_modules/") then
+  if
+    string.find(entry.path, ".venv/")
+    or string.find(entry.path, "node_modules/")
+  then
     return "TelescopeResultsComment"
   elseif entry.is_file_relative then
     return "MiniFilesFile"
