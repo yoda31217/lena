@@ -1144,7 +1144,7 @@ require("lazy").setup({
             },
           },
         },
-        use_libuv_file_watcher = false,
+        use_libuv_file_watcher = true,
         filesystem = {
           filtered_items = {
             hide_dotfiles = false,
@@ -1167,7 +1167,7 @@ require("lazy").setup({
       vim.keymap.set(
         "n",
         "<leader>t",
-        "<cmd>Neotree toggle<cr>",
+        "<cmd>Neotree toggle=true source=filesystem reveal=true position=current<cr>",
         { desc = "Neo[T]ree [T]oggle" }
       )
     end,
@@ -1216,6 +1216,17 @@ require("lazy").setup({
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end,
+  },
+
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neo-tree/neo-tree.nvim",
+    },
+    config = function()
+      require("lsp-file-operations").setup()
     end,
   },
 
