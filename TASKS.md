@@ -10,5 +10,6 @@
 - JS/TS LSP function call args pre-population, switching and quick info like in Lua
 - mini.move integration
 - wrap/unwrap lambda in JS/TS
+- on PASTE in HTML/JSX some closing tags are duplicated/missplaced/...
 
 
