@@ -11,5 +11,6 @@
 - mini.move integration
 - wrap/unwrap lambda in JS/TS
 - on PASTE in HTML/JSX some closing tags are duplicated/missplaced/...
+- Usable edit new name on rename dialog (good camel cased jumps, maybe add spaces, ...)
 
 
