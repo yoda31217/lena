@@ -13,5 +13,6 @@
 - on PASTE in HTML/JSX some closing tags are duplicated/missplaced/...
 - Usable edit new name on rename dialog (good camel cased jumps, maybe add spaces, ...)
 - highlight ignored files in file tree (darker color)
+- props with children autogenerate
 
 
