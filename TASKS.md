@@ -18,5 +18,7 @@
 - fast commit
 - fast tag rename
 - do not insert () after react component autocomplete
+- LSP to CSS
+- do not remove highlighting after deindent
 
 
