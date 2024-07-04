@@ -14,5 +14,9 @@
 - Usable edit new name on rename dialog (good camel cased jumps, maybe add spaces, ...)
 - highlight ignored files in file tree (darker color)
 - props with children autogenerate
+- sorround with tag
+- fast commit
+- fast tag rename
+- do not insert () after react component autocomplete
 
 
