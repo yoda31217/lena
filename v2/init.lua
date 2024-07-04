@@ -180,6 +180,13 @@ vim.opt.colorcolumn = "80,120"
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set(
+  "n",
+  "<c-s-w>",
+  "<cmd>lua vim.o.wrap = not vim.o.wrap<CR>",
+  { desc = "Toggle word [W]rapping" }
+)
+
 -- Diagnostic keymaps
 vim.keymap.set(
   "n",
@@ -704,10 +711,10 @@ require("lazy").setup({
                 command = "_typescript.organizeImports",
                 arguments = { vim.api.nvim_buf_get_name(0) },
               })
-              vim.lsp.buf.execute_command({
-                command = "pyright.organizeimports",
-                arguments = { vim.api.nvim_buf_get_name(0) },
-              })
+              -- vim.lsp.buf.execute_command({
+              --   command = "pyright.organizeimports",
+              --   arguments = { vim.api.nvim_buf_get_name(0) },
+              -- })
             end)
           end, "[F]ormat code")
 
