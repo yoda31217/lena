@@ -711,10 +711,10 @@ require("lazy").setup({
                 command = "_typescript.organizeImports",
                 arguments = { vim.api.nvim_buf_get_name(0) },
               })
-              -- vim.lsp.buf.execute_command({
-              --   command = "pyright.organizeimports",
-              --   arguments = { vim.api.nvim_buf_get_name(0) },
-              -- })
+              vim.lsp.buf.execute_command({
+                command = "pyright.organizeimports",
+                arguments = { vim.api.nvim_buf_get_name(0) },
+              })
             end)
           end, "[F]ormat code")
 
