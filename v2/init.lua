@@ -182,7 +182,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set(
   "n",
-  "<c-s-w>",
+  "<leader>zw",
   "<cmd>lua vim.o.wrap = not vim.o.wrap<CR>",
   { desc = "Toggle word [W]rapping" }
 )
